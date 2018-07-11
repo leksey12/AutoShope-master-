@@ -1,0 +1,25 @@
+﻿@using Domain.AutoShop
+@model IEnumerable<Auto>
+
+@{
+    ViewBag.Title = "Автомагазины";
+}
+
+@foreach (Auto auto in Model)
+{
+    
+    <div>
+     
+        <h3>@auto.NAME</h3> 
+        <h3>@auto.CITY</h3>
+        <p>@auto.ADRESS</p>
+        <h4>@auto.TELEPHONE</h4>
+        <h4>@auto.SITE</h4>
+        <a href="@Url.Action("Skoda","Skodas")"><p>Перейти</p></a>
+        @*<a href="@Url.Action("Skoda","Scodas")"><p>Перейти</p></a>*@
+        @*<a href="~/Views/Skodas/Skoda"><p>Перейти</p></a>*@
+        @*<p><a class="btn btn-default" href="~/Views/Skoda/Skoda/@auto.Id" style="color:#ffffff">Перейти &raquo;</a></p>*@ 
+       
+    </div>
+    <hr />
+}

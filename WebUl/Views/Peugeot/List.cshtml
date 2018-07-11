@@ -1,0 +1,24 @@
+﻿@using WebUl.Models
+@using WebUl.HtmlHelpers
+@model PeugeotListViewModel
+@{
+    ViewBag.Title = "Peugeot";
+}
+@foreach (var p in @Model.Peugeot)
+{
+    <div class="well">
+        <h3>
+            <strong>@p.Name</strong>
+            <span class="pull-right label label-primary">@p.Price.ToString("# руб")</span>
+        </h3>
+        <span class="lead">@p.Model</span>
+    </div>
+}
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+    @*<a href="@Url.Action("Index","Home")"><h4>Главная</h4></a>*@
+</div>
+<div class="panel-footer">
+    @Html.ActionLink("Aдмин редактор", "Index", "AdminPeugeot", null,
+            new { @class = "btn btn-default" })
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Domain.AutoShop.Lada>
+@{
+    ViewBag.Title = "Админ панель: список товаров";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="navbar navbar-inverse" role="navigation">
+    <a class="navbar-brand" href="#"></a>
+</div>
+<div id="categories" class="col-xs-3">
+    @*<a href="@Url.Action("Index","Home")"><h4>Главная</h4></a>*@
+    @Html.ActionLink("Главная", "Index", "Home", null,
+            new { @class = "btn btn-default" })
+</div>
+<div class="col-xs-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Список Автомобилей автосалона ВИКИНГИ</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped table-condensed table-bordered">
+                <tr>
+                    @*<th class="text-right">ID</th>*@
+                    <th>Название</th>
+                    <th>
+                        @Html.ActionLink("Модель", "Index", new { sortOrder = ViewBag.ModelSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Цена", "Index", new { sortOrder = ViewBag.PriceSortParm })
+                    </th>
+                    <th class="text-center">Действия</th>
+                </tr>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        @*<td class="text-right">@item.Id</td>*@
+                        <td>@Html.ActionLink(item.Name, "Edit", new { item.Id })</td>
+                        <td class="text-right">@item.Model</td>
+                        <td class="text-right">@item.Price.ToString("# руб")</td>
+                        <td class="text-center">
+                            @using (Html.BeginForm("Delete", "AdminLada"))
+                            {
+                                @Html.Hidden("Id", item.Id)
+                                <input type="submit"
+                                       class="btn btn-default btn-xs"
+                                       value="Удалить" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="panel-footer">
+            @Html.ActionLink("Добавить", "Create", null,
+            new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
