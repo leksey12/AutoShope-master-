@@ -130,11 +130,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AutoShop\EFDbContext%28WebUI%29.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AutoShop\EFDbContext%28WebUI%29_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Concrete\EFDbContext%28WebUI%29.mdf" />
+    <Content Include="Concrete\EFDbContext%28WebUI%29_log.ldf">
       <DependentUpon>EFDbContext%28WebUI%29.mdf</DependentUpon>
     </Content>
   </ItemGroup>
